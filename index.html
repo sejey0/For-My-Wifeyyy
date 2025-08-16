@@ -29,6 +29,54 @@
         justify-content: center;
         padding: 10px;
         overflow: hidden;
+        position: relative;
+      }
+
+      /* Beautiful animated background pattern */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          radial-gradient(circle at 20% 80%, rgba(255, 105, 180, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 80% 20%, rgba(155, 89, 182, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 40% 40%, rgba(152, 255, 152, 0.1) 1px, transparent 1px),
+          radial-gradient(circle at 60% 80%, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+        background-size: 60px 60px, 80px 80px, 40px 40px, 50px 50px;
+        animation: backgroundFloat 20s linear infinite;
+        pointer-events: none;
+        z-index: -10;
+      }
+
+      @keyframes backgroundFloat {
+        0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+        100% { background-position: 60px 60px, -80px 80px, 40px -40px, -50px 50px; }
+      }
+
+      /* Floating heart elements for overall ambiance */
+      body::after {
+        content: '💖 💝 🌹 🌸 🌷 💮 🌺 🌻 🌼 💐';
+        position: fixed;
+        top: -10%;
+        left: -10%;
+        width: 120%;
+        height: 120%;
+        font-size: 2rem;
+        opacity: 0.1;
+        animation: gentleFloat 30s linear infinite;
+        pointer-events: none;
+        z-index: -5;
+        word-spacing: 100px;
+        line-height: 150px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      @keyframes gentleFloat {
+        0% { transform: translateY(100vh) rotate(0deg); }
+        100% { transform: translateY(-20vh) rotate(360deg); }
       }
 
       .envelope-container {
@@ -176,7 +224,7 @@
         transform: translateZ(30px);
         text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       }
-      }
+      
 
       .envelope-title {
         font-family: "Dancing Script", cursive;
@@ -219,6 +267,318 @@
       @keyframes pulse {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.05); }
+      }
+
+      /* Enhanced Intro Decorations */
+      .intro-decoration-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .intro-flower {
+        position: absolute;
+        font-size: 2rem;
+        animation: floatGently 3s ease-in-out infinite;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      }
+
+      .intro-flower-1 {
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+        color: #ff69b4;
+      }
+
+      .intro-flower-2 {
+        top: 15%;
+        right: 8%;
+        animation-delay: 0.5s;
+        color: #dc143c;
+      }
+
+      .intro-flower-3 {
+        bottom: 20%;
+        left: 3%;
+        animation-delay: 1s;
+        color: #9b59b6;
+      }
+
+      .intro-flower-4 {
+        bottom: 15%;
+        right: 5%;
+        animation-delay: 1.5s;
+        color: #98ff98;
+      }
+
+      .intro-sparkle {
+        position: absolute;
+        font-size: 1.5rem;
+        animation: sparkleRotate 2s linear infinite;
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+      }
+
+      .intro-sparkle-1 {
+        top: 25%;
+        left: 12%;
+        animation-delay: 0s;
+      }
+
+      .intro-sparkle-2 {
+        top: 30%;
+        right: 15%;
+        animation-delay: 0.5s;
+      }
+
+      .intro-sparkle-3 {
+        bottom: 35%;
+        left: 10%;
+        animation-delay: 1s;
+      }
+
+      .intro-sparkle-4 {
+        bottom: 30%;
+        right: 12%;
+        animation-delay: 1.5s;
+      }
+
+      .intro-content-wrapper {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+      }
+
+      .magical-frame {
+        background: linear-gradient(135deg, 
+          rgba(152, 255, 152, 0.1) 0%,
+          rgba(155, 89, 182, 0.1) 50%,
+          rgba(152, 255, 152, 0.1) 100%);
+        border-radius: 25px;
+        padding: 30px 20px;
+        margin-bottom: 25px;
+        backdrop-filter: blur(5px);
+        box-shadow: 
+          0 0 20px rgba(152, 255, 152, 0.3),
+          inset 0 0 20px rgba(255, 255, 255, 0.1);
+      }
+
+      .title-sparkle {
+        display: inline-block;
+        animation: sparkleFloat 2s ease-in-out infinite;
+        font-size: 0.8em;
+        color: #ffd700;
+      }
+
+      .title-heart {
+        display: inline-block;
+        animation: heartBeat 1.5s ease-in-out infinite;
+        color: #ff69b4;
+        filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
+      }
+
+      .title-underline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px 0;
+        opacity: 0.8;
+      }
+
+      .underline-flower {
+        font-size: 1.5rem;
+        color: #9b59b6;
+        animation: pulseGlow 2s ease-in-out infinite;
+      }
+
+      .underline-vine {
+        margin: 0 15px;
+        color: #98ff98;
+        font-size: 1.2rem;
+        animation: waveFlow 3s ease-in-out infinite;
+      }
+
+      .subtitle-decoration {
+        display: inline-block;
+        font-size: 1.2rem;
+        animation: butterflyFly 4s ease-in-out infinite;
+        color: #9b59b6;
+        filter: drop-shadow(0 2px 4px rgba(155, 89, 182, 0.4));
+      }
+
+      .subtitle-ornaments {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        gap: 20px;
+      }
+
+      .ornament {
+        font-size: 1.3rem;
+        animation: ornamentGlow 2.5s ease-in-out infinite;
+      }
+
+      .ornament-left, .ornament-right {
+        color: #98ff98;
+      }
+
+      .ornament-center {
+        color: #ffd700;
+        font-size: 1.5rem;
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+      }
+
+      .button-glow {
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        background: linear-gradient(45deg, #98ff98, #9b59b6, #98ff98);
+        border-radius: 55px;
+        opacity: 0;
+        animation: buttonGlowPulse 3s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      .button-flower {
+        display: inline-block;
+        font-size: 1rem;
+        animation: buttonFlowerSway 2s ease-in-out infinite;
+      }
+
+      .button-flower-left {
+        margin-right: 10px;
+        animation-delay: 0s;
+      }
+
+      .button-flower-right {
+        margin-left: 10px;
+        animation-delay: 1s;
+      }
+
+      .intro-corner {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        z-index: 5;
+      }
+
+      .intro-corner-tl {
+        top: 10px;
+        left: 10px;
+      }
+
+      .intro-corner-tr {
+        top: 10px;
+        right: 10px;
+      }
+
+      .intro-corner-bl {
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .intro-corner-br {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .corner-vine {
+        font-size: 1.2rem;
+        color: #98ff98;
+        animation: vineGrow 4s ease-in-out infinite;
+      }
+
+      .corner-bloom {
+        font-size: 1.4rem;
+        animation: bloomOpen 3s ease-in-out infinite;
+      }
+
+      /* Enhanced Animations */
+      @keyframes floatGently {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(5deg); }
+      }
+
+      @keyframes sparkleRotate {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.2); }
+        100% { transform: rotate(360deg) scale(1); }
+      }
+
+      @keyframes sparkleFloat {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-5px) scale(1.1); }
+      }
+
+      @keyframes heartBeat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
+
+      @keyframes pulseGlow {
+        0%, 100% { 
+          transform: scale(1);
+          filter: drop-shadow(0 0 5px rgba(155, 89, 182, 0.5));
+        }
+        50% { 
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 15px rgba(155, 89, 182, 0.8));
+        }
+      }
+
+      @keyframes waveFlow {
+        0%, 100% { transform: scaleX(1); }
+        50% { transform: scaleX(1.1); }
+      }
+
+      @keyframes butterflyFly {
+        0%, 100% { transform: translateX(0px) rotate(0deg); }
+        25% { transform: translateX(3px) rotate(5deg); }
+        75% { transform: translateX(-3px) rotate(-5deg); }
+      }
+
+      @keyframes ornamentGlow {
+        0%, 100% { 
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% { 
+          transform: scale(1.1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes buttonGlowPulse {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 0.3; }
+      }
+
+      @keyframes buttonFlowerSway {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(10deg); }
+      }
+
+      @keyframes vineGrow {
+        0%, 100% { transform: scale(1) rotate(0deg); }
+        50% { transform: scale(1.1) rotate(2deg); }
+      }
+
+      @keyframes bloomOpen {
+        0%, 100% { 
+          transform: scale(1);
+          filter: brightness(1);
+        }
+        50% { 
+          transform: scale(1.2);
+          filter: brightness(1.2);
+        }
       }
 
       .letter-container {
@@ -572,10 +932,107 @@
       .starburst:nth-child(2) { top: 30%; right: 25%; animation-delay: 0.5s; }
       .starburst:nth-child(3) { bottom: 25%; left: 25%; animation-delay: 1s; }
       .starburst:nth-child(4) { bottom: 40%; right: 20%; animation-delay: 1.5s; }
+      .starburst:nth-child(5) { top: 50%; left: 10%; animation-delay: 2s; }
+      .starburst:nth-child(6) { top: 70%; right: 15%; animation-delay: 2.5s; }
 
       @keyframes starTwinkle {
         0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
         50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+      }
+
+      /* Floating butterflies */
+      .floating-butterfly {
+        position: absolute;
+        font-size: 1.8rem;
+        color: #ff69b4;
+        animation: butterflyFly 6s ease-in-out infinite;
+        pointer-events: none;
+        filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.5));
+      }
+
+      .floating-butterfly:nth-child(1) { 
+        top: 20%; 
+        right: 30%; 
+        animation-delay: 0s;
+        color: #ff1493;
+      }
+      .floating-butterfly:nth-child(2) { 
+        bottom: 30%; 
+        left: 30%; 
+        animation-delay: 2s;
+        color: #9b59b6;
+      }
+      .floating-butterfly:nth-child(3) { 
+        top: 60%; 
+        right: 40%; 
+        animation-delay: 4s;
+        color: #00bfff;
+      }
+
+      @keyframes butterflyFly {
+        0%, 100% { 
+          transform: translate(0, 0) rotate(0deg) scale(1);
+          opacity: 0.7;
+        }
+        25% { 
+          transform: translate(15px, -20px) rotate(10deg) scale(1.1);
+          opacity: 1;
+        }
+        50% { 
+          transform: translate(-10px, -15px) rotate(-5deg) scale(0.9);
+          opacity: 0.8;
+        }
+        75% { 
+          transform: translate(20px, 10px) rotate(15deg) scale(1.2);
+          opacity: 1;
+        }
+      }
+
+      /* Magical sparkles */
+      .magical-sparkle {
+        position: absolute;
+        font-size: 1.4rem;
+        animation: sparkleGlow 3s ease-in-out infinite;
+        pointer-events: none;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+      }
+
+      .magical-sparkle:nth-child(1) { 
+        top: 25%; 
+        left: 35%; 
+        animation-delay: 0s;
+        color: #ffd700;
+      }
+      .magical-sparkle:nth-child(2) { 
+        bottom: 35%; 
+        right: 35%; 
+        animation-delay: 1s;
+        color: #ff69b4;
+      }
+      .magical-sparkle:nth-child(3) { 
+        top: 55%; 
+        left: 25%; 
+        animation-delay: 2s;
+        color: #9b59b6;
+      }
+      .magical-sparkle:nth-child(4) { 
+        bottom: 55%; 
+        right: 25%; 
+        animation-delay: 3s;
+        color: #98ff98;
+      }
+
+      @keyframes sparkleGlow {
+        0%, 100% { 
+          transform: scale(0.8) rotate(0deg);
+          opacity: 0.5;
+          filter: drop-shadow(0 0 5px currentColor);
+        }
+        50% { 
+          transform: scale(1.3) rotate(180deg);
+          opacity: 1;
+          filter: drop-shadow(0 0 15px currentColor);
+        }
       }
 
       .love-pattern {
@@ -651,12 +1108,386 @@
         opacity: 0.9;
       }
 
+      /* Running Photo Cards Styles */
+      .photo-cards-container {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        margin: 40px 0;
+        overflow: hidden;
+        background: linear-gradient(135deg, 
+          rgba(152, 255, 152, 0.1) 0%, 
+          rgba(155, 89, 182, 0.1) 50%, 
+          rgba(255, 105, 180, 0.1) 100%);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 
+          0 10px 30px rgba(0, 0, 0, 0.2),
+          inset 0 0 20px rgba(255, 255, 255, 0.1);
+      }
+
+      .photo-cards-track {
+        display: flex;
+        animation: slideCards 25s linear infinite;
+        width: calc(274px * 14); /* 7 cards * 2 for seamless loop, 274px includes margin (250+24) */
+        height: 100%;
+        align-items: center;
+      }
+
+      .photo-card {
+        width: 250px;
+        height: 180px;
+        margin: 0 12px;
+        flex-shrink: 0;
+        perspective: 1000px;
+      }
+
+      .card-frame {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 
+          0 8px 25px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(152, 255, 152, 0.2),
+          inset 0 0 20px rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-style: preserve-3d;
+        animation: cardFloat 4s ease-in-out infinite;
+        border: 3px solid transparent;
+        background: linear-gradient(45deg, #ff69b4, #9b59b6, #98ff98, #ffd700) 1;
+        background-clip: padding-box;
+      }
+
+      .card-frame::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(45deg, 
+          #ff69b4, #9b59b6, #98ff98, #ffd700, 
+          #ff69b4, #9b59b6, #98ff98, #ffd700);
+        border-radius: 18px;
+        z-index: -1;
+        animation: borderGlow 3s linear infinite;
+        opacity: 0.8;
+      }
+
+      .card-frame::after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        background: radial-gradient(circle at center, 
+          rgba(255, 255, 255, 0.1) 0%, 
+          transparent 70%);
+        border-radius: 10px;
+        pointer-events: none;
+        z-index: 2;
+        animation: shimmer 2s ease-in-out infinite;
+      }
+
+      .card-frame:hover {
+        transform: rotateY(15deg) rotateX(10deg) scale(1.08) translateZ(20px);
+        box-shadow: 
+          0 20px 50px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba(152, 255, 152, 0.6),
+          0 0 60px rgba(255, 105, 180, 0.4);
+        animation-play-state: paused;
+      }
+
+      .card-frame:hover::before {
+        animation-duration: 1s;
+        opacity: 1;
+      }
+
+      .card-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 15px;
+        transition: all 0.4s ease;
+        display: block;
+        background-color: #f0f0f0;
+        filter: brightness(1) contrast(1.05) saturate(1.1);
+      }
+
+      .card-frame:hover img {
+        filter: brightness(1.1) contrast(1.1) saturate(1.2);
+        transform: scale(1.02);
+      }
+
+      /* Decorative Corner Elements */
+      .card-frame .card-corner {
+        position: absolute;
+        font-size: 1.2rem;
+        z-index: 3;
+        animation: cornerSparkle 2s ease-in-out infinite;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      }
+
+      .card-corner-tl {
+        top: 8px;
+        left: 8px;
+        color: #ff69b4;
+        animation-delay: 0s;
+      }
+
+      .card-corner-tr {
+        top: 8px;
+        right: 8px;
+        color: #98ff98;
+        animation-delay: 0.5s;
+      }
+
+      .card-corner-bl {
+        bottom: 8px;
+        left: 8px;
+        color: #ffd700;
+        animation-delay: 1s;
+      }
+
+      .card-corner-br {
+        bottom: 8px;
+        right: 8px;
+        color: #9b59b6;
+        animation-delay: 1.5s;
+      }
+
+      .card-overlay {
+        display: none;
+      }
+
+      .card-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #ff69b4, #98ff98, #ffd700);
+        border-radius: 2px;
+        animation: overlayGlow 2s ease-in-out infinite;
+      }
+
+      .card-frame:hover .card-overlay {
+        transform: translateY(0);
+      }
+
+      .card-overlay h3 {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: #98ff98;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        animation: textGlow 2s ease-in-out infinite;
+        position: relative;
+      }
+
+      .card-overlay h3::after {
+        content: '✨';
+        position: absolute;
+        right: -20px;
+        top: 0;
+        animation: sparkleRotate 2s linear infinite;
+        font-size: 0.8em;
+      }
+
+      .card-overlay p {
+        font-size: 1rem;
+        opacity: 0.95;
+        margin: 0;
+        font-weight: 300;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        animation: textFloat 3s ease-in-out infinite;
+      }
+
+      /* Enhanced Animations */
+      @keyframes borderGlow {
+        0%, 100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes shimmer {
+        0%, 100% {
+          opacity: 0.3;
+          transform: translateX(-10px);
+        }
+        50% {
+          opacity: 0.8;
+          transform: translateX(10px);
+        }
+      }
+
+      @keyframes cornerSparkle {
+        0%, 100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.3) rotate(180deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes overlayGlow {
+        0%, 100% {
+          opacity: 0.5;
+          transform: translateX(-50%) scaleX(1);
+        }
+        50% {
+          opacity: 1;
+          transform: translateX(-50%) scaleX(1.2);
+        }
+      }
+
+      @keyframes textGlow {
+        0%, 100% {
+          text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.5),
+            0 0 10px rgba(152, 255, 152, 0.3);
+        }
+        50% {
+          text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.5),
+            0 0 20px rgba(152, 255, 152, 0.6);
+        }
+      }
+
+      @keyframes textFloat {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-2px);
+        }
+      }
+
+      .card-sparkle {
+        position: absolute;
+        font-size: 1.5rem;
+        animation: sparkleMove 3s ease-in-out infinite;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .card-sparkle-1 {
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+        color: #ffd700;
+      }
+
+      .card-sparkle-2 {
+        top: 20%;
+        right: 10%;
+        animation-delay: 1s;
+        color: #98ff98;
+      }
+
+      .card-sparkle-3 {
+        bottom: 25%;
+        left: 8%;
+        animation-delay: 2s;
+        color: #ff69b4;
+      }
+
+      .card-sparkle-4 {
+        bottom: 15%;
+        right: 5%;
+        animation-delay: 1.5s;
+        color: #9b59b6;
+      }
+
+      .card-heart {
+        position: absolute;
+        font-size: 1.2rem;
+        animation: heartFloat 2.5s ease-in-out infinite;
+        z-index: 10;
+        pointer-events: none;
+        color: #ff69b4;
+      }
+
+      .card-heart-1 {
+        top: 30%;
+        left: 15%;
+        animation-delay: 0.5s;
+      }
+
+      .card-heart-2 {
+        top: 60%;
+        right: 20%;
+        animation-delay: 1.5s;
+      }
+
+      .card-heart-3 {
+        bottom: 40%;
+        left: 50%;
+        animation-delay: 2.5s;
+      }
+
+      /* Photo Cards Animations */
+      @keyframes slideCards {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes cardFloat {
+        0%, 100% {
+          transform: translateY(0px) rotateZ(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotateZ(1deg);
+        }
+      }
+
+      @keyframes sparkleMove {
+        0%, 100% {
+          transform: translateY(0px) scale(1) rotate(0deg);
+          opacity: 0.8;
+        }
+        50% {
+          transform: translateY(-15px) scale(1.2) rotate(180deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes heartFloat {
+        0%, 100% {
+          transform: translateY(0px) scale(1);
+          opacity: 0.7;
+        }
+        50% {
+          transform: translateY(-12px) scale(1.3);
+          opacity: 1;
+        }
+      }
+
       .letter-content {
         padding: 80px 120px;
         position: relative;
         overflow: hidden;
+        border: 3px solid transparent;
+        border-image: linear-gradient(45deg, #ff69b4, #9b59b6, #98ff98, #ffd700) 1;
+        border-radius: 20px;
       }
 
+      /* Beautiful flower garden border */
       .letter-content::before {
         content: '';
         position: absolute;
@@ -665,14 +1496,43 @@
         width: 100%;
         height: 100%;
         background: 
-          radial-gradient(circle at 15% 25%, rgba(152, 255, 152, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 15% 25%, rgba(255, 105, 180, 0.1) 2px, transparent 2px),
           radial-gradient(circle at 85% 75%, rgba(155, 89, 182, 0.1) 2px, transparent 2px),
           radial-gradient(circle at 45% 15%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-          radial-gradient(circle at 75% 35%, rgba(152, 255, 152, 0.1) 1px, transparent 1px);
-        background-size: 40px 40px, 50px 50px, 25px 25px, 30px 30px;
+          radial-gradient(circle at 75% 35%, rgba(152, 255, 152, 0.1) 1px, transparent 1px),
+          radial-gradient(circle at 25% 85%, rgba(255, 215, 0, 0.1) 1px, transparent 1px),
+          radial-gradient(circle at 65% 65%, rgba(220, 20, 60, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px, 50px 50px, 25px 25px, 30px 30px, 35px 35px, 45px 45px;
         animation: decorativeMove 15s linear infinite;
         pointer-events: none;
         z-index: 0;
+      }
+
+      /* Add floating flower petals around the content */
+      .letter-content::after {
+        content: '🌸 🌺 🌷 🌹 💮 🌻 🌼 💐';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        font-size: 1.5rem;
+        opacity: 0.3;
+        animation: petalSwirl 25s linear infinite;
+        pointer-events: none;
+        z-index: 0;
+        word-spacing: 50px;
+        line-height: 80px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      @keyframes petalSwirl {
+        0% { transform: rotate(0deg) scale(1); opacity: 0.2; }
+        50% { transform: rotate(180deg) scale(1.1); opacity: 0.4; }
+        100% { transform: rotate(360deg) scale(1); opacity: 0.2; }
       }
 
       @keyframes decorativeMove {
@@ -716,6 +1576,38 @@
         animation-delay: 1.5s;
       }
 
+      .ornament-5 {
+        top: 45%;
+        left: 3%;
+        font-size: 1.6rem;
+        animation-delay: 2.5s;
+        color: #ff69b4;
+      }
+
+      .ornament-6 {
+        top: 65%;
+        right: 3%;
+        font-size: 1.3rem;
+        animation-delay: 3s;
+        color: #ff1493;
+      }
+
+      .ornament-7 {
+        bottom: 50%;
+        left: 2%;
+        font-size: 1.4rem;
+        animation-delay: 3.5s;
+        color: #9b59b6;
+      }
+
+      .ornament-8 {
+        top: 25%;
+        right: 2%;
+        font-size: 1.5rem;
+        animation-delay: 4s;
+        color: #00bfff;
+      }
+
       @keyframes ornamentFloat {
         0%, 100% { 
           transform: translateY(0px) rotate(0deg);
@@ -724,6 +1616,115 @@
         50% { 
           transform: translateY(-8px) rotate(5deg);
           opacity: 0.6;
+        }
+      }
+
+      /* Corner decorations */
+      .corner-decoration {
+        position: absolute;
+        font-size: 2.5rem;
+        animation: cornerFloat 4s ease-in-out infinite;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        transition: all 0.3s ease;
+      }
+
+      .corner-decoration:hover {
+        transform: scale(1.4) rotate(20deg);
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+      }
+
+      .top-left {
+        top: 15px;
+        left: 15px;
+        color: #ff1493;
+        animation-delay: 0s;
+      }
+
+      .top-right {
+        top: 15px;
+        right: 15px;
+        color: #ff69b4;
+        animation-delay: 1s;
+      }
+
+      .bottom-left {
+        bottom: 15px;
+        left: 15px;
+        color: #9b59b6;
+        animation-delay: 2s;
+      }
+
+      .bottom-right {
+        bottom: 15px;
+        right: 15px;
+        color: #98ff98;
+        animation-delay: 3s;
+      }
+
+      @keyframes cornerFloat {
+        0%, 100% { 
+          transform: translateY(0px) rotate(0deg) scale(1);
+          opacity: 0.8;
+        }
+        50% { 
+          transform: translateY(-5px) rotate(10deg) scale(1.1);
+          opacity: 1;
+        }
+      }
+
+      /* Magical floating elements */
+      .magical-element {
+        position: absolute;
+        font-size: 1.8rem;
+        animation: magicalFloat 5s ease-in-out infinite;
+        pointer-events: none;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+      }
+
+      .magic-1 {
+        top: 20%;
+        left: 15%;
+        color: #ffd700;
+        animation-delay: 0s;
+      }
+
+      .magic-2 {
+        top: 70%;
+        right: 20%;
+        color: #ff69b4;
+        animation-delay: 1.5s;
+      }
+
+      .magic-3 {
+        bottom: 30%;
+        left: 20%;
+        color: #00bfff;
+        animation-delay: 3s;
+      }
+
+      .magic-4 {
+        top: 50%;
+        right: 10%;
+        color: #98ff98;
+        animation-delay: 4.5s;
+      }
+
+      @keyframes magicalFloat {
+        0%, 100% { 
+          transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+          opacity: 0.6;
+        }
+        25% { 
+          transform: translateY(-10px) translateX(5px) rotate(90deg) scale(1.2);
+          opacity: 1;
+        }
+        50% { 
+          transform: translateY(-5px) translateX(-3px) rotate(180deg) scale(0.9);
+          opacity: 0.8;
+        }
+        75% { 
+          transform: translateY(8px) translateX(7px) rotate(270deg) scale(1.1);
+          opacity: 1;
         }
       }
 
@@ -766,6 +1767,55 @@
         right: 30px;
         color: #9b59b6;
         animation-delay: 1.5s;
+      }
+
+      .sunflower-1 {
+        top: 15%;
+        right: 8%;
+        color: #ffd700;
+        animation-delay: 0.5s;
+        font-size: 2.2rem;
+      }
+
+      .cherry-1 {
+        top: 25%;
+        left: 8%;
+        color: #ff69b4;
+        animation-delay: 2.5s;
+        font-size: 1.8rem;
+      }
+
+      .hibiscus-1 {
+        bottom: 15%;
+        right: 8%;
+        color: #dc143c;
+        animation-delay: 3s;
+        font-size: 2.1rem;
+      }
+
+      .daisy-1 {
+        bottom: 25%;
+        left: 8%;
+        color: #ffffff;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        animation-delay: 1.2s;
+        font-size: 1.9rem;
+      }
+
+      .bouquet-1 {
+        top: 40%;
+        left: 5%;
+        color: #ff1493;
+        animation-delay: 3.5s;
+        font-size: 2.3rem;
+      }
+
+      .blossom-1 {
+        top: 60%;
+        right: 5%;
+        color: #ff69b4;
+        animation-delay: 4s;
+        font-size: 2rem;
       }
 
       @keyframes float {
@@ -1105,6 +2155,298 @@
           border-top: 75px solid #9b59b6;
         }
       }
+      /* Security Modal Styles */
+      .security-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease;
+      }
+
+      .security-modal.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(15px);
+        z-index: 1;
+      }
+
+      .modal-content {
+        position: relative;
+        background: linear-gradient(135deg, rgba(152, 255, 152, 0.95), rgba(155, 89, 182, 0.95));
+        border-radius: 25px;
+        padding: 40px;
+        max-width: 500px;
+        width: 90%;
+        z-index: 2;
+        box-shadow: 
+          0 30px 80px rgba(0, 0, 0, 0.3),
+          0 15px 40px rgba(155, 89, 182, 0.4),
+          inset 0 2px 10px rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        animation: modalAppear 0.5s ease-out;
+        pointer-events: auto;
+      }
+
+      @keyframes modalAppear {
+        0% {
+          opacity: 0;
+          transform: scale(0.8) translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .modal-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .modal-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .modal-icon {
+        display: inline-block;
+        animation: iconPulse 2s ease-in-out infinite;
+        margin: 0 10px;
+      }
+
+      @keyframes iconPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+
+      .modal-subtitle {
+        font-size: 1.1rem;
+        color: #2c3e50;
+        opacity: 0.8;
+        font-weight: 400;
+      }
+
+      .modal-body {
+        text-align: center;
+      }
+
+      .question-container {
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 50;
+      }
+
+      .security-question {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .name-input {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #2c3e50;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        text-align: center;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        position: relative;
+        pointer-events: auto;
+      }
+
+      /* Ensure both inputs work the same */
+      #nameInput, #childrenInput {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #2c3e50;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        text-align: center;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        position: relative;
+        pointer-events: auto !important;
+        cursor: text;
+      }
+
+      .name-input:focus {
+        border-color: #9b59b6;
+        box-shadow: 0 0 20px rgba(155, 89, 182, 0.3);
+        transform: scale(1.02);
+      }
+
+      .input-decoration {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        opacity: 0.7;
+      }
+
+      .input-flower {
+        margin: 0 5px;
+        animation: flowerFloat 3s ease-in-out infinite;
+      }
+
+      .input-vine {
+        margin: 0 10px;
+        opacity: 0.5;
+      }
+
+      @keyframes flowerFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
+
+      .modal-buttons {
+        margin: 20px 0;
+      }
+
+      .submit-btn {
+        background: linear-gradient(135deg, #9b59b6, #2c3e50);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1000;
+        pointer-events: auto;
+        user-select: none;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .btn-flower {
+        margin: 0 8px;
+        display: inline-block;
+        animation: btnFlowerSpin 4s linear infinite;
+      }
+
+      @keyframes btnFlowerSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .error-message {
+        margin-top: 15px;
+        padding: 12px 20px;
+        background: rgba(231, 76, 60, 0.9);
+        color: white;
+        border-radius: 10px;
+        font-weight: 500;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .error-message.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .error-icon {
+        margin-right: 8px;
+        animation: errorShake 0.5s ease-in-out;
+      }
+
+      @keyframes errorShake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+
+      .modal-corner {
+        position: absolute;
+        font-size: 1.5rem;
+        opacity: 0.6;
+        animation: cornerPulse 3s ease-in-out infinite;
+      }
+
+      .modal-corner-tl {
+        top: 15px;
+        left: 15px;
+      }
+
+      .modal-corner-tr {
+        top: 15px;
+        right: 15px;
+      }
+
+      .modal-corner-bl {
+        bottom: 15px;
+        left: 15px;
+      }
+
+      .modal-corner-br {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      @keyframes cornerPulse {
+        0%, 100% { 
+          transform: scale(1) rotate(0deg);
+          opacity: 0.6;
+        }
+        50% { 
+          transform: scale(1.1) rotate(180deg);
+          opacity: 0.8;
+        }
+      }
+
+      /* Disable interaction when modal is shown but keep envelope clear */
+      body.modal-active .envelope-container {
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
@@ -1127,25 +2469,126 @@
         <div class="love-pattern"></div>
         <div class="envelope-flap"></div>
         
-        <!-- Decorative elements around envelope -->
-        <div class="envelope-decorations">
-          <div class="floating-flower">🌸</div>
-          <div class="floating-flower">🌹</div>
-          <div class="floating-flower">🌷</div>
-          <div class="floating-flower">💮</div>
-          <div class="starburst">✨</div>
-          <div class="starburst">⭐</div>
-          <div class="starburst">💫</div>
-          <div class="starburst">🌟</div>
-        </div>
-        
+      
         <div class="envelope-content">
-          <h1 class="envelope-title">You've Got Mail! 💌</h1>
-          <p class="envelope-subtitle">A special monthsary letter awaits you</p>
+          <!-- Decorative intro border -->
+          <div class="intro-decoration-border">
+            <div class="intro-flower intro-flower-1">🌸</div>
+            <div class="intro-flower intro-flower-2">🌹</div>
+            <div class="intro-flower intro-flower-3">🌷</div>
+            <div class="intro-flower intro-flower-4">💮</div>
+            <div class="intro-sparkle intro-sparkle-1">✨</div>
+            <div class="intro-sparkle intro-sparkle-2">⭐</div>
+            <div class="intro-sparkle intro-sparkle-3">💫</div>
+            <div class="intro-sparkle intro-sparkle-4">🌟</div>
+          </div>
+          
+          <!-- Main intro content -->
+          <h1 class="envelope-title">
+            <span class="title-sparkle">✨</span>
+            You've Got Mail! 
+            <span class="title-heart">💌</span>
+            <span class="title-sparkle">✨</span>
+          </h1>
+          <div class="title-underline">
+            <div class="underline-flower">🌺</div>
+            <div class="underline-vine">〰️〰️〰️</div>
+            <div class="underline-flower">🌺</div>
+          </div>
+          
+          <p class="envelope-subtitle">
+            <span class="subtitle-decoration">🦋</span>
+            A special monthsary letter awaits you
+            <span class="subtitle-decoration">🦋</span>
+          </p>
+          
+          <!-- Beautiful decorative elements around subtitle -->
+          <div class="subtitle-ornaments">
+            <div class="ornament ornament-left">🌿</div>
+            <div class="ornament ornament-center">💎</div>
+            <div class="ornament ornament-right">🌿</div>
+          </div>
+          
           <div class="open-instruction" id="openButton">
+            <div class="button-glow"></div>
+            <span class="button-flower button-flower-left">🌹</span>
             ✨ Click to Open Your Letter ✨
+            <span class="button-flower button-flower-right">🌹</span>
+          </div>
+          
+          <!-- Corner decorative elements -->
+          <div class="intro-corner intro-corner-tl">
+            <div class="corner-vine">🌿</div>
+            <div class="corner-bloom">🌸</div>
+          </div>
+          <div class="intro-corner intro-corner-tr">
+            <div class="corner-bloom">🌸</div>
+            <div class="corner-vine">🌿</div>
+          </div>
+          <div class="intro-corner intro-corner-bl">
+            <div class="corner-vine">🌿</div>
+            <div class="corner-bloom">🌷</div>
+          </div>
+          <div class="intro-corner intro-corner-br">
+            <div class="corner-bloom">🌷</div>
+            <div class="corner-vine">🌿</div>
           </div>
         </div>
+      </div>
+
+      <!-- Security Question Modal -->
+      <div class="security-modal" id="securityModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">
+              <span class="modal-icon">🔐Security Questions🔐</span> 
+              <span class="modal-icon"></span>
+            </h2>
+            <div class="modal-subtitle">To access this special letter, please answer:</div>
+          </div>
+          
+          <div class="modal-body">
+            <div class="question-container">
+              <p class="security-question">What is my name?</p>
+              <input type="text" id="nameInput" class="name-input" placeholder="Enter the name..." autocomplete="off">
+              <div class="input-decoration">
+                <span class="input-flower">🌸</span>
+                <span class="input-vine">〰️〰️</span>
+                <span class="input-flower">🌸</span>
+              </div>
+            </div>
+            
+            <div class="question-container">
+              <p class="security-question">How many children do I want?</p>
+              <input type="text" id="childrenInput" class="name-input" placeholder="Enter the number..." autocomplete="off">
+              <div class="input-decoration">
+                <span class="input-flower">🌸</span>
+                <span class="input-vine">〰️〰️</span>
+                <span class="input-flower">🌸</span>
+              </div>
+            </div>
+            
+            <div class="modal-buttons">
+              <button id="submitAnswer" class="submit-btn">
+                <span class="btn-flower">🌹</span>
+                Submit Answers
+                <span class="btn-flower">🌹</span>
+              </button>
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+              <span class="error-icon">❌</span>
+              <span class="error-text">Incorrect answers. Please try again.</span>
+            </div>
+          </div>
+          
+          <!-- Modal decorative elements -->
+          <div class="modal-corner modal-corner-tl">🌿</div>
+          <div class="modal-corner modal-corner-tr">🌿</div>
+          <div class="modal-corner modal-corner-bl">🌺</div>
+          <div class="modal-corner modal-corner-br">🌺</div>
+        </div>
+        <div class="modal-overlay"></div>
       </div>
 
       <!-- Opening Animation Effects -->
@@ -1157,10 +2600,165 @@
         <div class="decorative-border"></div>
         
         <div class="letter-header">
-          <h1 class="letter-title">Happy Monthsary!</h1>
+          <h1 class="letter-title">Happy 1st Monthsary lovelove!</h1>
           <p class="letter-subtitle">
             Celebrating another beautiful month together
           </p>
+        </div>
+
+        <!-- Running Photo Cards Section -->
+        <div class="photo-cards-container">
+          <div class="photo-cards-track">
+            <div class="photo-card">
+              <div class="card-frame">
+                <div class="card-corner card-corner-tl">🌸</div>
+                <div class="card-corner card-corner-tr">✨</div>
+                <div class="card-corner card-corner-bl">💖</div>
+                <div class="card-corner card-corner-br">🌟</div>
+                <img src="images/IMG_20250717_092841_554.jpg" alt="Our Beautiful Memory" />
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/IMG_20250811_171107_439.jpg" alt="Special Day" />
+                <div class="card-overlay">
+                  <h3>Special Day</h3>
+                  <p>Together forever 💕</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/IMG_20250811_171110_307.jpg" alt="Sweet Memory" />
+                <div class="card-overlay">
+                  <h3>Sweet Memory</h3>
+                  <p>Making us smile 🎉</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/IMG_20250811_171117_133.jpg" alt="Adventure Time" />
+                <div class="card-overlay">
+                  <h3>Adventure Time</h3>
+                  <p>Exploring together 🌟</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/Screenshot_20250627-185513.jpg" alt="Love Screenshot" />
+                <div class="card-overlay">
+                  <h3>Love Messages</h3>
+                  <p>Our conversations 💖</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/Screenshot_20250801-214334.jpg" alt="Recent Memory" />
+                <div class="card-overlay">
+                  <h3>Recent Memory</h3>
+                  <p>Still going strong 💪</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/Screenshot_20250801-214351.jpg" alt="Our Future" />
+                <div class="card-overlay">
+                  <h3>Our Journey</h3>
+                  <p>Many more moments ahead 💞</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Duplicate cards for seamless loop -->
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/IMG_20250717_092841_554.jpg" alt="Our Beautiful Memory" />
+                <div class="card-overlay">
+                  <h3>Beautiful Moment</h3>
+                  <p>Cherished memories ❤️</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/IMG_20250811_171107_439.jpg" alt="Special Day" />
+                <div class="card-overlay">
+                  <h3>Special Day</h3>
+                  <p>Together forever 💕</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/IMG_20250811_171110_307.jpg" alt="Sweet Memory" />
+                <div class="card-overlay">
+                  <h3>Sweet Memory</h3>
+                  <p>Making us smile 🎉</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/IMG_20250811_171117_133.jpg" alt="Adventure Time" />
+                <div class="card-overlay">
+                  <h3>Adventure Time</h3>
+                  <p>Exploring together 🌟</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/Screenshot_20250627-185513.jpg" alt="Love Screenshot" />
+                <div class="card-overlay">
+                  <h3>Love Messages</h3>
+                  <p>Our conversations 💖</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/Screenshot_20250801-214334.jpg" alt="Recent Memory" />
+                <div class="card-overlay">
+                  <h3>Recent Memory</h3>
+                  <p>Still going strong 💪</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="photo-card">
+              <div class="card-frame">
+                <img src="images/Screenshot_20250801-214351.jpg" alt="Our Future" />
+                <div class="card-overlay">
+                  <h3>Our Journey</h3>
+                  <p>Many more moments ahead 💞</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Decorative elements around photo cards -->
+          <div class="card-sparkle card-sparkle-1">✨</div>
+          <div class="card-sparkle card-sparkle-2">💫</div>
+          <div class="card-sparkle card-sparkle-3">⭐</div>
+          <div class="card-sparkle card-sparkle-4">🌟</div>
+          <div class="card-heart card-heart-1">💕</div>
+          <div class="card-heart card-heart-2">❤️</div>
+          <div class="card-heart card-heart-3">💖</div>
         </div>
 
       <div class="letter-content">
@@ -1169,12 +2767,34 @@
         <div class="flower-decoration rose-1">🌹</div>
         <div class="flower-decoration tulip-2">🌷</div>
         <div class="flower-decoration rose-2">🌹</div>
+        <div class="flower-decoration sunflower-1">🌻</div>
+        <div class="flower-decoration cherry-1">🌸</div>
+        <div class="flower-decoration hibiscus-1">🌺</div>
+        <div class="flower-decoration daisy-1">🌼</div>
+        <div class="flower-decoration bouquet-1">💐</div>
+        <div class="flower-decoration blossom-1">🌷</div>
 
         <!-- Additional ornamental decorations -->
         <div class="letter-ornament ornament-1">💫</div>
         <div class="letter-ornament ornament-2">⭐</div>
         <div class="letter-ornament ornament-3">✨</div>
         <div class="letter-ornament ornament-4">🌟</div>
+        <div class="letter-ornament ornament-5">🌠</div>
+        <div class="letter-ornament ornament-6">💖</div>
+        <div class="letter-ornament ornament-7">💝</div>
+        <div class="letter-ornament ornament-8">🦋</div>
+
+        <!-- Beautiful border decorations -->
+        <div class="corner-decoration top-left">🌹</div>
+        <div class="corner-decoration top-right">🌸</div>
+        <div class="corner-decoration bottom-left">🌷</div>
+        <div class="corner-decoration bottom-right">💮</div>
+
+        <!-- Floating magical elements -->
+        <div class="magical-element magic-1">✨</div>
+        <div class="magical-element magic-2">💫</div>
+        <div class="magical-element magic-3">🌟</div>
+        <div class="magical-element magic-4">⭐</div>
 
         <div class="letter-text">
           <div class="greeting">My Dearest Love,</div>
@@ -1227,10 +2847,166 @@
     <script>
       // Add some interactive effects
       document.addEventListener("DOMContentLoaded", function () {
-        // Envelope opening functionality
+        // Security and envelope opening functionality
         const envelopeContainer = document.getElementById('envelopeContainer');
         const envelope = document.getElementById('envelope');
         const openButton = document.getElementById('openButton');
+        const securityModal = document.getElementById('securityModal');
+        const nameInput = document.getElementById('nameInput');
+        const childrenInput = document.getElementById('childrenInput');
+        const submitButton = document.getElementById('submitAnswer');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Valid name variations
+        const validNames = [
+          "Christian Jay Mandani",
+          "Christian Jay C Mandani", 
+          "Christian Jay C. Mandani",
+          "Christian Jay Cereza Mandani"
+        ];
+        
+        // Valid children answers
+        const validChildrenAnswers = [
+          "5",
+          "Five",
+          "five"
+        ];
+        
+        // Security state
+        let securityPassed = false;
+        
+        // Initially show the security modal
+        document.body.classList.add('modal-active');
+        
+        // Ensure modal is visible and input is focusable
+        setTimeout(() => {
+          if (securityModal) {
+            securityModal.classList.remove('hidden');
+            console.log('Security modal shown');
+          }
+          setTimeout(() => {
+            if (nameInput) {
+              console.log('Name input ready');
+            }
+            if (childrenInput) {
+              console.log('Children input found and ready');
+            } else {
+              console.error('Children input not found');
+            }
+          }, 200);
+        }, 100);
+        
+        function showSecurityModal() {
+          securityModal.classList.remove('hidden');
+          document.body.classList.add('modal-active');
+          // Let user choose which input to focus
+        }
+        
+        function hideSecurityModal() {
+          securityModal.classList.add('hidden');
+          document.body.classList.remove('modal-active');
+        }
+        
+        function validateName(inputName) {
+          const trimmedInput = inputName.trim();
+          return validNames.some(validName => 
+            validName.toLowerCase() === trimmedInput.toLowerCase()
+          );
+        }
+        
+        function validateChildren(inputChildren) {
+          const trimmedInput = inputChildren.trim();
+          return validChildrenAnswers.some(validAnswer => 
+            validAnswer.toLowerCase() === trimmedInput.toLowerCase()
+          );
+        }
+        
+        function showError() {
+          errorMessage.classList.add('show');
+          nameInput.style.borderColor = '#e74c3c';
+          nameInput.style.animation = 'errorShake 0.5s ease-in-out';
+          childrenInput.style.borderColor = '#e74c3c';
+          childrenInput.style.animation = 'errorShake 0.5s ease-in-out';
+          
+          setTimeout(() => {
+            nameInput.style.animation = '';
+            nameInput.style.borderColor = '';
+            childrenInput.style.animation = '';
+            childrenInput.style.borderColor = '';
+          }, 500);
+          
+          setTimeout(() => {
+            errorMessage.classList.remove('show');
+          }, 3000);
+        }
+        
+        function checkAnswer() {
+          const inputName = nameInput.value;
+          const inputChildren = childrenInput.value;
+          
+          if (validateName(inputName) && validateChildren(inputChildren)) {
+            // Both answers correct - hide modal and show envelope intro
+            hideSecurityModal();
+            
+            // Add success effect
+            createSuccessEffect();
+            
+            // Enable letter opening functionality
+            enableLetterOpening();
+          } else {
+            // Wrong answer(s) - show error
+            showError();
+            nameInput.value = '';
+            childrenInput.value = '';
+          }
+        }
+        
+        function createSuccessEffect() {
+          // Create success sparkles
+          const sparkleCount = 20;
+          for (let i = 0; i < sparkleCount; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.textContent = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.fontSize = '2rem';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.animation = 'successSparkle 2s ease-out forwards';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+              sparkle.remove();
+            }, 2000);
+          }
+        }
+        
+        function enableLetterOpening() {
+          // Mark security as passed
+          securityPassed = true;
+          console.log('Letter opening enabled');
+        }
+        
+        // Add success sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes successSparkle {
+            0% { 
+              opacity: 1; 
+              transform: scale(0) rotate(0deg); 
+            }
+            50% { 
+              opacity: 1; 
+              transform: scale(1.5) rotate(180deg); 
+            }
+            100% { 
+              opacity: 0; 
+              transform: scale(0) rotate(360deg); 
+            }
+          }
+        `;
+        document.head.appendChild(style);
         
         function openLetter() {
           console.log('Opening letter...'); // Debug log
@@ -1247,25 +3023,79 @@
           }, 1000);
         }
         
-        // Add multiple event listeners to ensure it works
-        if (envelope) {
-          envelope.addEventListener('click', openLetter);
+        // Event listeners for security modal
+        if (submitButton) {
+          submitButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Submit button clicked');
+            checkAnswer();
+          });
+          console.log('Submit button event listener attached');
+        } else {
+          console.error('Submit button not found');
         }
         
-        if (openButton) {
-          openButton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            openLetter();
+        nameInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            checkAnswer();
+          }
+        });
+        
+        childrenInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            checkAnswer();
+          }
+        });
+        
+        // Add click handlers to ensure inputs are working
+        if (nameInput) {
+          nameInput.addEventListener('click', function() {
+            console.log('Name input clicked');
           });
         }
         
-        // Fallback: add event listener to the entire envelope container
-        if (envelopeContainer) {
-          envelopeContainer.addEventListener('click', function(e) {
+        if (childrenInput) {
+          childrenInput.addEventListener('click', function() {
+            console.log('Children input clicked');
+          });
+          childrenInput.addEventListener('focus', function() {
+            console.log('Children input focused');
+          });
+          childrenInput.addEventListener('input', function() {
+            console.log('Children input typing:', this.value);
+          });
+        } else {
+          console.error('Children input element not found');
+        }
+        
+        // Handle letter click based on security state
+        function handleLetterClick(e) {
+          if (!securityPassed) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!securityModal.classList.contains('hidden')) {
+              showSecurityModal();
+            }
+          } else {
+            // Security passed, allow letter opening
             if (!envelopeContainer.classList.contains('opened')) {
               openLetter();
             }
-          });
+          }
+        }
+        
+        // Add multiple event listeners for letter opening prevention
+        if (envelope) {
+          envelope.addEventListener('click', handleLetterClick);
+        }
+        
+        if (openButton) {
+          openButton.addEventListener('click', handleLetterClick);
+        }
+        
+        if (envelopeContainer) {
+          envelopeContainer.addEventListener('click', handleLetterClick);
         }
 
         // Add interactive hover effects for envelope decorations
