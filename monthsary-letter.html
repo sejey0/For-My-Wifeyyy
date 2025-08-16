@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monthsary Letter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #98ff98 0%,
+          #9b59b6 50%,
+          #2c3e50 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        overflow: hidden;
+      }
+
+      .envelope-container {
+        position: relative;
+        max-width: 1600px;
+        width: 98%;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .envelope {
+        background: linear-gradient(135deg, #9b59b6, #2c3e50);
+        border-radius: 20px;
+        padding: 60px 50px;
+        box-shadow: 
+          0 30px 80px rgba(0, 0, 0, 0.4),
+          0 15px 40px rgba(155, 89, 182, 0.3),
+          inset 0 2px 10px rgba(255, 255, 255, 0.1);
+        border: 3px solid #98ff98;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: perspective(1200px) rotateX(15deg) rotateY(-10deg) translateZ(50px);
+        animation: envelopeFloat 4s ease-in-out infinite;
+        width: 100%;
+        max-width: 900px;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform-style: preserve-3d;
+      }
+
+      @keyframes envelopeFloat {
+        0%, 100% { 
+          transform: perspective(1200px) rotateX(15deg) rotateY(-10deg) translateZ(50px) translateY(0px);
+        }
+        50% { 
+          transform: perspective(1200px) rotateX(18deg) rotateY(-8deg) translateZ(60px) translateY(-15px);
+        }
+      }
+
+      .envelope:hover {
+        transform: perspective(1200px) rotateX(8deg) rotateY(-3deg) translateZ(80px) scale(1.02);
+        box-shadow: 
+          0 40px 100px rgba(0, 0, 0, 0.5),
+          0 20px 50px rgba(155, 89, 182, 0.4),
+          inset 0 2px 15px rgba(255, 255, 255, 0.15);
+      }
+
+      .envelope::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: 50%;
+        transform: translateX(-50%) translateZ(10px);
+        width: 0;
+        height: 0;
+        border-left: 180px solid transparent;
+        border-right: 180px solid transparent;
+        border-top: 120px solid #98ff98;
+        transition: all 0.8s ease;
+        filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
+        transform-style: preserve-3d;
+      }
+
+      .envelope-flap {
+        position: absolute;
+        top: -2px;
+        left: 50%;
+        transform: translateX(-50%) translateZ(20px);
+        width: 0;
+        height: 0;
+        border-left: 160px solid transparent;
+        border-right: 160px solid transparent;
+        border-top: 110px solid #9b59b6;
+        z-index: 10;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: bottom center;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+        transform-style: preserve-3d;
+        background: linear-gradient(135deg, #9b59b6, #7d3c98);
+      }
+
+      .envelope::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 30%,
+          transparent 70%,
+          rgba(0, 0, 0, 0.1) 100%
+        );
+        border-radius: 20px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Add envelope side effects */
+      .envelope-side-left {
+        position: absolute;
+        top: 10px;
+        left: -8px;
+        width: 8px;
+        height: calc(100% - 20px);
+        background: linear-gradient(180deg, #7d3c98, #1f2937);
+        border-radius: 0 0 0 15px;
+        transform: rotateY(-20deg);
+        transform-origin: right center;
+        z-index: -1;
+      }
+
+      .envelope-side-bottom {
+        position: absolute;
+        bottom: -8px;
+        left: 10px;
+        width: calc(100% - 20px);
+        height: 8px;
+        background: linear-gradient(90deg, #7d3c98, #1f2937, #7d3c98);
+        border-radius: 0 0 15px 15px;
+        transform: rotateX(20deg);
+        transform-origin: top center;
+        z-index: -1;
+      }
+
+      .envelope-content {
+        text-align: center;
+        color: white;
+        position: relative;
+        z-index: 50;
+        cursor: pointer;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        transform: translateZ(30px);
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+      }
+
+      .envelope-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 3.2rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+      }
+
+      .envelope-subtitle {
+        font-size: 1.6rem;
+        opacity: 0.9;
+        margin-bottom: 30px;
+        line-height: 1.4;
+        font-weight: 300;
+      }
+
+      .open-instruction {
+        background: rgba(152, 255, 152, 0.2);
+        padding: 18px 40px;
+        border-radius: 50px;
+        border: 2px solid #98ff98;
+        display: inline-block;
+        font-weight: 500;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        animation: pulse 2s infinite;
+        cursor: pointer;
+        position: relative;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .open-instruction:hover {
+        background: rgba(152, 255, 152, 0.3);
+        transform: scale(1.05);
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      .letter-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        max-width: 1600px;
+        width: 98%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8) rotateY(-15deg);
+        overflow: hidden;
+        opacity: 0;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 98vh;
+        overflow-y: auto;
+      }
+
+      .envelope-container.opened .envelope {
+        opacity: 0;
+        transform: perspective(1200px) rotateX(25deg) rotateY(-15deg) translateZ(30px) scale(0.8) translateY(-50px);
+        pointer-events: none;
+      }
+
+      .envelope-container.opened .envelope-flap {
+        transform: translateX(-50%) translateZ(20px) rotateX(-180deg);
+      }
+
+      .envelope-container.opened .letter-container {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+      }
+
+      /* Opening Animation Design Elements */
+      .opening-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 15;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .envelope-container.opened .opening-particles {
+        opacity: 1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #98ff98;
+        border-radius: 50%;
+        animation: particleFloat 3s ease-out forwards;
+      }
+
+      .particle:nth-child(2n) { background: #9b59b6; }
+      .particle:nth-child(3n) { background: #ffffff; }
+
+      @keyframes particleFloat {
+        0% {
+          transform: translate(0, 0) scale(0);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--random-x), var(--random-y)) scale(1);
+          opacity: 0;
+        }
+      }
+
+      .sparkle-effect {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        opacity: 0;
+        animation: sparkleAnimation 2s ease-in-out;
+        pointer-events: none;
+        z-index: 20;
+      }
+
+      @keyframes sparkleAnimation {
+        0% { 
+          opacity: 0; 
+          transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        }
+        20% { 
+          opacity: 1; 
+          transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
+        }
+        80% { 
+          opacity: 1; 
+          transform: translate(-50%, -50%) scale(1) rotate(360deg);
+        }
+        100% { 
+          opacity: 0; 
+          transform: translate(-50%, -50%) scale(0) rotate(540deg);
+        }
+      }
+
+      .magic-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border: 3px solid rgba(152, 255, 152, 0.6);
+        border-radius: 50%;
+        opacity: 0;
+        animation: circleExpand 1.5s ease-out;
+        pointer-events: none;
+        z-index: 12;
+      }
+
+      .magic-circle::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: 150px;
+        border: 2px solid rgba(155, 89, 182, 0.4);
+        border-radius: 50%;
+      }
+
+      .magic-circle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+      }
+
+      @keyframes circleExpand {
+        0% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(0);
+        }
+        50% {
+          opacity: 0.8;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(2);
+        }
+      }
+
+      .rose-petals {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 18;
+      }
+
+      .petal {
+        position: absolute;
+        font-size: 1.2rem;
+        opacity: 0;
+        animation: petalFall 3s ease-in-out forwards;
+      }
+
+      @keyframes petalFall {
+        0% {
+          opacity: 1;
+          transform: translateY(-20px) rotate(0deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      .envelope-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background: radial-gradient(
+          circle at 30% 20%, 
+          rgba(152, 255, 152, 0.3) 0%, 
+          rgba(155, 89, 182, 0.2) 40%,
+          transparent 70%
+        );
+        opacity: 0;
+        animation: glowPulse 2s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 2;
+        filter: blur(1px);
+      }
+
+      @keyframes glowPulse {
+        0%, 100% { opacity: 0; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.05); }
+      }
+
+      .envelope:hover .envelope-glow {
+        opacity: 0.3;
+      }
+
+      .letter-shimmer {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(152, 255, 152, 0.3),
+          transparent
+        );
+        animation: shimmer 2s ease-in-out;
+        pointer-events: none;
+        z-index: 25;
+      }
+
+      @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+      }
+
+      .envelope-container.opened .letter-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(152, 255, 152, 0.3),
+          transparent
+        );
+        animation: shimmer 2s ease-in-out 0.5s;
+        pointer-events: none;
+        z-index: 25;
+      }
+
+      /* Additional Decorative Elements */
+      .envelope-decorations {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .floating-flower {
+        position: absolute;
+        font-size: 1.5rem;
+        opacity: 0.6;
+        animation: floatAround 6s ease-in-out infinite;
+      }
+
+      .floating-flower:nth-child(1) {
+        top: 10%;
+        left: 15%;
+        animation-delay: 0s;
+      }
+
+      .floating-flower:nth-child(2) {
+        top: 20%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .floating-flower:nth-child(3) {
+        bottom: 15%;
+        left: 10%;
+        animation-delay: 4s;
+      }
+
+      .floating-flower:nth-child(4) {
+        bottom: 25%;
+        right: 15%;
+        animation-delay: 1s;
+      }
+
+      @keyframes floatAround {
+        0%, 100% { 
+          transform: translate(0, 0) rotate(0deg);
+          opacity: 0.6;
+        }
+        25% { 
+          transform: translate(10px, -15px) rotate(90deg);
+          opacity: 0.8;
+        }
+        50% { 
+          transform: translate(-5px, -10px) rotate(180deg);
+          opacity: 0.4;
+        }
+        75% { 
+          transform: translate(-10px, 5px) rotate(270deg);
+          opacity: 0.7;
+        }
+      }
+
+      .envelope-border-glow {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border-radius: 25px;
+        background: linear-gradient(45deg, #98ff98, #9b59b6, #98ff98, #9b59b6);
+        background-size: 400% 400%;
+        animation: borderFlow 3s ease-in-out infinite;
+        z-index: -2;
+        filter: blur(2px);
+        opacity: 0.8;
+      }
+
+      @keyframes borderFlow {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      .starburst {
+        position: absolute;
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.7);
+        animation: starTwinkle 2s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .starburst:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+      .starburst:nth-child(2) { top: 30%; right: 25%; animation-delay: 0.5s; }
+      .starburst:nth-child(3) { bottom: 25%; left: 25%; animation-delay: 1s; }
+      .starburst:nth-child(4) { bottom: 40%; right: 20%; animation-delay: 1.5s; }
+
+      @keyframes starTwinkle {
+        0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+        50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+      }
+
+      .love-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          radial-gradient(circle at 20% 30%, rgba(152, 255, 152, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 80% 70%, rgba(155, 89, 182, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px, 60px 60px, 30px 30px;
+        animation: patternMove 10s linear infinite;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      @keyframes patternMove {
+        0% { background-position: 0 0, 0 0, 0 0; }
+        100% { background-position: 50px 50px, -60px 60px, 30px -30px; }
+      }
+
+      .letter-header {
+        background: linear-gradient(45deg, #9b59b6, #2c3e50);
+        color: white;
+        padding: 80px;
+        text-align: center;
+        position: relative;
+      }
+
+      .letter-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 10px,
+          rgba(152, 255, 152, 0.1) 10px,
+          rgba(152, 255, 152, 0.1) 20px
+        );
+        animation: movePattern 20s linear infinite;
+      }
+
+      @keyframes movePattern {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      .letter-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 4.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .letter-subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        position: relative;
+        z-index: 2;
+        opacity: 0.9;
+      }
+
+      .letter-content {
+        padding: 80px 120px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .letter-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          radial-gradient(circle at 15% 25%, rgba(152, 255, 152, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 85% 75%, rgba(155, 89, 182, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 45% 15%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+          radial-gradient(circle at 75% 35%, rgba(152, 255, 152, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px, 50px 50px, 25px 25px, 30px 30px;
+        animation: decorativeMove 15s linear infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @keyframes decorativeMove {
+        0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+        100% { background-position: 40px 40px, -50px 50px, 25px -25px, -30px 30px; }
+      }
+
+      /* Additional decorative elements */
+      .letter-ornament {
+        position: absolute;
+        opacity: 0.3;
+        animation: ornamentFloat 4s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .ornament-1 {
+        top: 10%;
+        left: 5%;
+        font-size: 1.5rem;
+        animation-delay: 0s;
+      }
+
+      .ornament-2 {
+        top: 30%;
+        right: 8%;
+        font-size: 1.2rem;
+        animation-delay: 1s;
+      }
+
+      .ornament-3 {
+        bottom: 20%;
+        left: 8%;
+        font-size: 1.3rem;
+        animation-delay: 2s;
+      }
+
+      .ornament-4 {
+        bottom: 35%;
+        right: 5%;
+        font-size: 1.4rem;
+        animation-delay: 1.5s;
+      }
+
+      @keyframes ornamentFloat {
+        0%, 100% { 
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.3;
+        }
+        50% { 
+          transform: translateY(-8px) rotate(5deg);
+          opacity: 0.6;
+        }
+      }
+
+      .flower-decoration {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.7;
+        animation: float 3s ease-in-out infinite;
+        transition: all 0.3s ease;
+      }
+
+      .flower-decoration:hover {
+        transform: scale(1.3) rotate(15deg);
+        opacity: 1;
+      }
+
+      .tulip-1 {
+        top: 20px;
+        left: 30px;
+        color: #9b59b6;
+        animation-delay: 0s;
+      }
+
+      .rose-1 {
+        top: 50px;
+        right: 40px;
+        color: #2c3e50;
+        animation-delay: 1s;
+      }
+
+      .tulip-2 {
+        bottom: 30px;
+        left: 50px;
+        color: #98ff98;
+        animation-delay: 2s;
+      }
+
+      .rose-2 {
+        bottom: 60px;
+        right: 30px;
+        color: #9b59b6;
+        animation-delay: 1.5s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(5deg);
+        }
+      }
+
+      .letter-text {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 60px 80px;
+        border-radius: 15px;
+        margin: 50px 0;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      @keyframes letterGlow {
+        /* Removed glow effect */
+      }
+
+      .letter-text::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: textShimmer 6s ease-in-out infinite;
+      }
+
+      @keyframes textShimmer {
+        0% { left: -100%; }
+        50% { left: 100%; }
+        100% { left: -100%; }
+      }
+
+      .greeting {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.2rem;
+        color: #9b59b6;
+        margin-bottom: 25px;
+        font-weight: 600;
+        position: relative;
+        animation: greetingFloat 2s ease-in-out infinite;
+      }
+
+      @keyframes greetingFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+      }
+
+      .greeting::after {
+        content: '💕';
+        position: absolute;
+        right: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        animation: heartPulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes heartPulse {
+        0%, 100% { transform: translateY(-50%) scale(1); }
+        50% { transform: translateY(-50%) scale(1.3); }
+      }
+
+      .message {
+        line-height: 1.8;
+        color: #2c3e50;
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+        position: relative;
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+      }
+
+      .message:nth-child(2) { animation-delay: 0.2s; }
+      .message:nth-child(3) { animation-delay: 0.4s; }
+      .message:nth-child(4) { animation-delay: 0.6s; }
+      .message:nth-child(5) { animation-delay: 0.8s; }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .highlight {
+        background: linear-gradient(
+          120deg,
+          rgba(152, 255, 152, 0.3) 0%,
+          rgba(155, 89, 182, 0.3) 100%
+        );
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 500;
+        position: relative;
+        animation: highlightGlow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes highlightGlow {
+        0% { box-shadow: 0 0 5px rgba(152, 255, 152, 0.3); }
+        100% { box-shadow: 0 0 15px rgba(155, 89, 182, 0.5); }
+      }
+
+      .highlight::before {
+        content: '✨';
+        position: absolute;
+        left: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.8rem;
+        opacity: 0.7;
+        animation: sparkle 1.5s ease-in-out infinite;
+      }
+
+      @keyframes sparkle {
+        0%, 100% { opacity: 0.3; transform: translateY(-50%) rotate(0deg); }
+        50% { opacity: 1; transform: translateY(-50%) rotate(180deg); }
+      }
+
+      .signature {
+        text-align: right;
+        margin-top: 50px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+        animation: signatureAppear 1s ease-out 1s both;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      @keyframes signatureAppear {
+        0% {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .signature::before {
+        display: none;
+      }
+
+      @keyframes lineFlow {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
+      }
+
+      .signature-text {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.8rem;
+        color: #9b59b6;
+        font-weight: 600;
+        position: relative;
+        margin-bottom: 5px;
+      }
+
+      .signature-text:first-child::after {
+        content: '🌹';
+        position: absolute;
+        right: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: roseFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes roseFloat {
+        0%, 100% { transform: translateY(-50%) rotate(0deg); }
+        50% { transform: translateY(-60%) rotate(10deg); }
+      }
+
+      .date {
+        color: #2c3e50;
+        font-size: 1.2rem;
+        margin-top: 12px;
+        opacity: 0.8;
+      }
+
+      .heart-animation {
+        display: inline-block;
+        color: #9b59b6;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      .decorative-border {
+        display: none;
+      }
+
+      .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .floating-heart {
+        position: absolute;
+        color: rgba(155, 89, 182, 0.3);
+        font-size: 1rem;
+        animation: floatUp 8s linear infinite;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .floating-heart:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+      }
+      .floating-heart:nth-child(2) {
+        left: 20%;
+        animation-delay: 2s;
+      }
+      .floating-heart:nth-child(3) {
+        left: 30%;
+        animation-delay: 4s;
+      }
+      .floating-heart:nth-child(4) {
+        left: 70%;
+        animation-delay: 1s;
+      }
+      .floating-heart:nth-child(5) {
+        left: 80%;
+        animation-delay: 3s;
+      }
+      .floating-heart:nth-child(6) {
+        left: 90%;
+        animation-delay: 5s;
+      }
+
+      @media (max-width: 768px) {
+        .letter-title {
+          font-size: 3.2rem;
+        }
+
+        .letter-subtitle {
+          font-size: 1.3rem;
+        }
+
+        .letter-content {
+          padding: 50px 40px;
+        }
+
+        .message {
+          font-size: 1.1rem;
+        }
+
+        .greeting {
+          font-size: 1.9rem;
+        }
+
+        .letter-container {
+          max-width: 98%;
+          width: 98%;
+        }
+
+        .signature-text {
+          font-size: 1.9rem;
+        }
+
+        .envelope {
+          max-width: 95%;
+          padding: 40px 30px;
+          min-height: 400px;
+        }
+
+        .envelope-title {
+          font-size: 2.5rem;
+        }
+
+        .envelope-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .open-instruction {
+          font-size: 1rem;
+          padding: 15px 30px;
+        }
+
+        .envelope::before {
+          border-left: 120px solid transparent;
+          border-right: 120px solid transparent;
+          border-top: 80px solid #98ff98;
+        }
+
+        .envelope-flap {
+          border-left: 110px solid transparent;
+          border-right: 110px solid transparent;
+          border-top: 75px solid #9b59b6;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floating-elements">
+      <div class="floating-heart">💜</div>
+      <div class="floating-heart">🖤</div>
+      <div class="floating-heart">💚</div>
+      <div class="floating-heart">💜</div>
+      <div class="floating-heart">🖤</div>
+      <div class="floating-heart">💚</div>
+    </div>
+
+    <div class="envelope-container" id="envelopeContainer">
+      <!-- Envelope (initial state) -->
+      <div class="envelope" id="envelope">
+        <div class="envelope-side-left"></div>
+        <div class="envelope-side-bottom"></div>
+        <div class="envelope-border-glow"></div>
+        <div class="envelope-glow"></div>
+        <div class="love-pattern"></div>
+        <div class="envelope-flap"></div>
+        
+        <!-- Decorative elements around envelope -->
+        <div class="envelope-decorations">
+          <div class="floating-flower">🌸</div>
+          <div class="floating-flower">🌹</div>
+          <div class="floating-flower">🌷</div>
+          <div class="floating-flower">💮</div>
+          <div class="starburst">✨</div>
+          <div class="starburst">⭐</div>
+          <div class="starburst">💫</div>
+          <div class="starburst">🌟</div>
+        </div>
+        
+        <div class="envelope-content">
+          <h1 class="envelope-title">You've Got Mail! 💌</h1>
+          <p class="envelope-subtitle">A special monthsary letter awaits you</p>
+          <div class="open-instruction" id="openButton">
+            ✨ Click to Open Your Letter ✨
+          </div>
+        </div>
+      </div>
+
+      <!-- Opening Animation Effects -->
+      <div class="opening-particles" id="openingParticles"></div>
+      <div class="rose-petals" id="rosePetals"></div>
+
+      <!-- Letter (revealed after opening) -->
+      <div class="letter-container" id="letterContainer">
+        <div class="decorative-border"></div>
+        
+        <div class="letter-header">
+          <h1 class="letter-title">Happy Monthsary!</h1>
+          <p class="letter-subtitle">
+            Celebrating another beautiful month together
+          </p>
+        </div>
+
+      <div class="letter-content">
+        <!-- Flower decorations -->
+        <div class="flower-decoration tulip-1">🌷</div>
+        <div class="flower-decoration rose-1">🌹</div>
+        <div class="flower-decoration tulip-2">🌷</div>
+        <div class="flower-decoration rose-2">🌹</div>
+
+        <!-- Additional ornamental decorations -->
+        <div class="letter-ornament ornament-1">💫</div>
+        <div class="letter-ornament ornament-2">⭐</div>
+        <div class="letter-ornament ornament-3">✨</div>
+        <div class="letter-ornament ornament-4">🌟</div>
+
+        <div class="letter-text">
+          <div class="greeting">My Dearest Love,</div>
+
+          <p class="message">
+            Another month has passed, and my love for you continues to grow
+            stronger each day.
+            <span class="highlight"
+              >You are the sunshine that brightens my darkest days</span
+            >
+            and the gentle breeze that brings peace to my soul.
+          </p>
+
+          <p class="message">
+            Every moment we share together is a treasure that I hold close to my
+            heart. From our silly conversations to our deep talks, from our
+            laughter to our comfortable silences -
+            <span class="highlight"
+              >each memory we create is more precious than the last</span
+            >.
+          </p>
+
+          <p class="message">
+            Thank you for being my partner, my best friend, and my greatest
+            love. Thank you for choosing me every single day and for making this
+            journey so incredibly beautiful.
+            <span class="highlight"
+              >I can't wait to create more amazing memories with you</span
+            >
+            in the months to come.
+          </p>
+
+          <p class="message">
+            Here's to another month of love, laughter, and endless adventures
+            together!
+            <span class="heart-animation">💜</span>
+          </p>
+        </div>
+
+        <div class="signature">
+          <div class="signature-text">
+            With all my love and endless affection,
+          </div>
+          <div class="signature-text">Your Forever Person</div>
+          <div class="date">August 16, 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Add some interactive effects
+      document.addEventListener("DOMContentLoaded", function () {
+        // Envelope opening functionality
+        const envelopeContainer = document.getElementById('envelopeContainer');
+        const envelope = document.getElementById('envelope');
+        const openButton = document.getElementById('openButton');
+        
+        function openLetter() {
+          console.log('Opening letter...'); // Debug log
+          
+          // Add opened class for main animation
+          envelopeContainer.classList.add('opened');
+          
+          // Create magical opening effects
+          createOpeningEffects();
+          
+          // Start floating flowers after letter opens
+          setTimeout(() => {
+            startFloatingFlowers();
+          }, 1000);
+        }
+        
+        // Add multiple event listeners to ensure it works
+        if (envelope) {
+          envelope.addEventListener('click', openLetter);
+        }
+        
+        if (openButton) {
+          openButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openLetter();
+          });
+        }
+        
+        // Fallback: add event listener to the entire envelope container
+        if (envelopeContainer) {
+          envelopeContainer.addEventListener('click', function(e) {
+            if (!envelopeContainer.classList.contains('opened')) {
+              openLetter();
+            }
+          });
+        }
+
+        // Add interactive hover effects for envelope decorations
+        envelope.addEventListener('mouseenter', function() {
+          const flowers = envelope.querySelectorAll('.floating-flower');
+          const stars = envelope.querySelectorAll('.starburst');
+          
+          flowers.forEach((flower, index) => {
+            flower.style.animationDuration = '2s';
+            flower.style.transform = `scale(1.2) rotate(${index * 90}deg)`;
+          });
+          
+          stars.forEach((star, index) => {
+            star.style.animationDuration = '1s';
+            star.style.opacity = '1';
+          });
+        });
+
+        envelope.addEventListener('mouseleave', function() {
+          const flowers = envelope.querySelectorAll('.floating-flower');
+          const stars = envelope.querySelectorAll('.starburst');
+          
+          flowers.forEach((flower) => {
+            flower.style.animationDuration = '6s';
+            flower.style.transform = '';
+          });
+          
+          stars.forEach((star) => {
+            star.style.animationDuration = '2s';
+            star.style.opacity = '';
+          });
+        });
+
+        function createOpeningEffects() {
+          // Create sparkle effect
+          createSparkleEffect();
+          
+          // Create magic circles
+          setTimeout(() => createMagicCircle(), 300);
+          
+          // Create particle explosion
+          setTimeout(() => createParticleExplosion(), 500);
+          
+          // Create falling rose petals
+          setTimeout(() => createFallingPetals(), 800);
+        }
+
+        function createSparkleEffect() {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle-effect';
+          sparkle.textContent = '✨💫⭐';
+          envelopeContainer.appendChild(sparkle);
+          
+          setTimeout(() => {
+            sparkle.remove();
+          }, 2000);
+        }
+
+        function createMagicCircle() {
+          const circle = document.createElement('div');
+          circle.className = 'magic-circle';
+          envelopeContainer.appendChild(circle);
+          
+          setTimeout(() => {
+            circle.remove();
+          }, 1500);
+        }
+
+        function createParticleExplosion() {
+          const particlesContainer = document.getElementById('openingParticles');
+          const particleCount = 30;
+          
+          for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random positions and directions
+            const angle = (i / particleCount) * 2 * Math.PI;
+            const distance = Math.random() * 200 + 100;
+            const randomX = Math.cos(angle) * distance + (Math.random() - 0.5) * 100;
+            const randomY = Math.sin(angle) * distance + (Math.random() - 0.5) * 100;
+            
+            particle.style.setProperty('--random-x', randomX + 'px');
+            particle.style.setProperty('--random-y', randomY + 'px');
+            particle.style.left = '50%';
+            particle.style.top = '50%';
+            particle.style.animationDelay = Math.random() * 0.5 + 's';
+            
+            particlesContainer.appendChild(particle);
+            
+            setTimeout(() => {
+              particle.remove();
+            }, 3000);
+          }
+        }
+
+        function createFallingPetals() {
+          const petalsContainer = document.getElementById('rosePetals');
+          const petals = ['🌸', '🌺', '🌹', '🌷', '💮'];
+          const petalCount = 15;
+          
+          for (let i = 0; i < petalCount; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            petal.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            
+            petalsContainer.appendChild(petal);
+            
+            setTimeout(() => {
+              petal.remove();
+            }, 5000);
+          }
+        }
+
+        // Create additional floating flowers
+        const container = document.querySelector(".floating-elements");
+
+        function createFloatingFlower() {
+          const flower = document.createElement("div");
+          flower.textContent = Math.random() > 0.5 ? "🌷" : "🌹";
+          flower.style.position = "absolute";
+          flower.style.left = Math.random() * 100 + "%";
+          flower.style.top = "100vh";
+          flower.style.fontSize = "1.5rem";
+          flower.style.opacity = "0.4";
+          flower.style.pointerEvents = "none";
+          flower.style.animation = "floatUp 12s linear infinite";
+
+          container.appendChild(flower);
+
+          setTimeout(() => {
+            flower.remove();
+          }, 12000);
+        }
+
+        function startFloatingFlowers() {
+          // Create floating flowers periodically
+          setInterval(createFloatingFlower, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
