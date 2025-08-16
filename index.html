@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monthsary Letter</title>
+    <link rel="icon" type="image/x-icon" href="images/IMG_20250717_092841_554.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/IMG_20250717_092841_554.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/IMG_20250717_092841_554.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/IMG_20250717_092841_554.jpg">
+    <title>Happy 1st Monthsary | Letter for My Wifeyyy/LoveLove/Boss/Madam </title>
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
@@ -3706,6 +3710,107 @@
           // Create floating flowers periodically
           setInterval(createFloatingFlower, 3000);
         }
+
+        // Animated Favicon Functionality with Your Image
+        function createAnimatedFavicon() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = 32;
+          canvas.height = 32;
+          
+          // Load your image
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          
+          img.onload = function() {
+            function drawFavicon() {
+              // Clear canvas
+              ctx.clearRect(0, 0, 32, 32);
+              
+              // Animation variables
+              const time = Date.now() * 0.003;
+              const scale = 0.9 + Math.sin(time * 2) * 0.1; // Gentle pulsing
+              const rotation = Math.sin(time * 1.5) * 0.1; // Subtle rotation
+              
+              // Save context for transformations
+              ctx.save();
+              
+              // Apply transformations from center
+              ctx.translate(16, 16);
+              ctx.rotate(rotation);
+              ctx.scale(scale, scale);
+              
+              // Create circular clipping mask
+              ctx.beginPath();
+              ctx.arc(0, 0, 15, 0, Math.PI * 2);
+              ctx.clip();
+              
+              // Draw your image centered and fitted
+              const size = 30;
+              ctx.drawImage(img, -size/2, -size/2, size, size);
+              
+              // Restore context
+              ctx.restore();
+              
+              // Add animated border glow
+              const glowIntensity = 0.5 + Math.sin(time * 3) * 0.3;
+              ctx.strokeStyle = `rgba(152, 255, 152, ${glowIntensity})`;
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.arc(16, 16, 14, 0, Math.PI * 2);
+              ctx.stroke();
+              
+              // Add inner glow
+              ctx.strokeStyle = `rgba(155, 89, 182, ${glowIntensity * 0.8})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.arc(16, 16, 12, 0, Math.PI * 2);
+              ctx.stroke();
+              
+              // Add sparkle effects
+              if (Math.random() > 0.8) {
+                const sparkleX = Math.random() * 32;
+                const sparkleY = Math.random() * 32;
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.random()})`;
+                ctx.fillRect(sparkleX, sparkleY, 1, 1);
+              }
+              
+              // Convert canvas to favicon
+              const dataURL = canvas.toDataURL('image/png');
+              updateFavicon(dataURL);
+              
+              requestAnimationFrame(drawFavicon);
+            }
+            
+            // Start the animation
+            drawFavicon();
+          };
+          
+          img.onerror = function() {
+            console.log('Could not load favicon image, using fallback');
+            // Fallback to original image without animation
+            updateFavicon('images/IMG_20250717_092841_554.jpg');
+          };
+          
+          // Load your image
+          img.src = 'images/IMG_20250717_092841_554.jpg';
+          
+          function updateFavicon(dataURL) {
+            let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+            link.type = 'image/x-icon';
+            link.rel = 'shortcut icon';
+            link.href = dataURL;
+            
+            if (!document.querySelector("link[rel*='icon']")) {
+              document.getElementsByTagName('head')[0].appendChild(link);
+            }
+          }
+        }
+        
+        // Start animated favicon when letter opens
+        setTimeout(() => {
+          createAnimatedFavicon();
+        }, 2000);
       });
     </script>
   </body>
