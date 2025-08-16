@@ -582,10 +582,19 @@
       }
 
       .letter-container {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, 
+          rgba(152, 255, 152, 0.95) 0%,
+          rgba(98, 255, 152, 0.95) 25%,
+          rgba(155, 89, 182, 0.95) 75%,
+          rgba(128, 0, 128, 0.95) 100%
+        );
+        backdrop-filter: blur(15px);
+        border-radius: 25px;
+        box-shadow: 
+          0 25px 80px rgba(155, 89, 182, 0.4),
+          0 15px 40px rgba(152, 255, 152, 0.3),
+          inset 0 2px 20px rgba(255, 255, 255, 0.2);
+        border: 3px solid rgba(255, 255, 255, 0.3);
         max-width: 1600px;
         width: 98%;
         position: absolute;
@@ -594,9 +603,27 @@
         transform: translate(-50%, -50%) scale(0.8) rotateY(-15deg);
         overflow: hidden;
         opacity: 0;
-        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         max-height: 98vh;
         overflow-y: auto;
+        animation: letterFloat 6s ease-in-out infinite;
+      }
+
+      @keyframes letterFloat {
+        0%, 100% { 
+          transform: translate(-50%, -50%) scale(1) rotateY(0deg) translateY(0px);
+          box-shadow: 
+            0 25px 80px rgba(155, 89, 182, 0.4),
+            0 15px 40px rgba(152, 255, 152, 0.3),
+            inset 0 2px 20px rgba(255, 255, 255, 0.2);
+        }
+        50% { 
+          transform: translate(-50%, -50%) scale(1.02) rotateY(0deg) translateY(-10px);
+          box-shadow: 
+            0 35px 100px rgba(155, 89, 182, 0.5),
+            0 20px 50px rgba(152, 255, 152, 0.4),
+            inset 0 2px 25px rgba(255, 255, 255, 0.3);
+        }
       }
 
       .envelope-container.opened .envelope {
@@ -1074,19 +1101,28 @@
         background: repeating-linear-gradient(
           45deg,
           transparent,
-          transparent 10px,
-          rgba(152, 255, 152, 0.1) 10px,
-          rgba(152, 255, 152, 0.1) 20px
+          transparent 15px,
+          rgba(155, 89, 182, 0.15) 15px,
+          rgba(155, 89, 182, 0.15) 30px,
+          transparent 30px,
+          transparent 45px,
+          rgba(152, 255, 152, 0.15) 45px,
+          rgba(152, 255, 152, 0.15) 60px
         );
-        animation: movePattern 20s linear infinite;
+        animation: purpleMintPattern 25s linear infinite;
       }
 
-      @keyframes movePattern {
+      @keyframes purpleMintPattern {
         0% {
           transform: translate(-50%, -50%) rotate(0deg);
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.6;
         }
         100% {
           transform: translate(-50%, -50%) rotate(360deg);
+          opacity: 0.3;
         }
       }
 
@@ -1482,12 +1518,42 @@
         padding: 80px 120px;
         position: relative;
         overflow: hidden;
+        background: linear-gradient(45deg, 
+          rgba(152, 255, 152, 0.1) 0%,
+          rgba(155, 89, 182, 0.1) 50%,
+          rgba(152, 255, 152, 0.1) 100%
+        );
         border: 3px solid transparent;
-        border-image: linear-gradient(45deg, #ff69b4, #9b59b6, #98ff98, #ffd700) 1;
-        border-radius: 20px;
+        border-image: linear-gradient(45deg, 
+          #98ff98, 
+          #9b59b6, 
+          #98ff98, 
+          #9b59b6
+        ) 1;
+        border-radius: 25px;
+        animation: borderShimmer 4s ease-in-out infinite;
       }
 
-      /* Beautiful flower garden border */
+      @keyframes borderShimmer {
+        0%, 100% {
+          border-image: linear-gradient(45deg, 
+            #98ff98, 
+            #9b59b6, 
+            #98ff98, 
+            #9b59b6
+          ) 1;
+        }
+        50% {
+          border-image: linear-gradient(45deg, 
+            #9b59b6, 
+            #98ff98, 
+            #9b59b6, 
+            #98ff98
+          ) 1;
+        }
+      }
+
+      /* Beautiful purple and mint green garden border */
       .letter-content::before {
         content: '';
         position: absolute;
@@ -1496,37 +1562,66 @@
         width: 100%;
         height: 100%;
         background: 
-          radial-gradient(circle at 15% 25%, rgba(255, 105, 180, 0.1) 2px, transparent 2px),
-          radial-gradient(circle at 85% 75%, rgba(155, 89, 182, 0.1) 2px, transparent 2px),
-          radial-gradient(circle at 45% 15%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-          radial-gradient(circle at 75% 35%, rgba(152, 255, 152, 0.1) 1px, transparent 1px),
-          radial-gradient(circle at 25% 85%, rgba(255, 215, 0, 0.1) 1px, transparent 1px),
-          radial-gradient(circle at 65% 65%, rgba(220, 20, 60, 0.1) 1px, transparent 1px);
-        background-size: 40px 40px, 50px 50px, 25px 25px, 30px 30px, 35px 35px, 45px 45px;
-        animation: decorativeMove 15s linear infinite;
+          radial-gradient(circle at 15% 25%, rgba(152, 255, 152, 0.15) 3px, transparent 3px),
+          radial-gradient(circle at 85% 75%, rgba(155, 89, 182, 0.15) 3px, transparent 3px),
+          radial-gradient(circle at 45% 15%, rgba(152, 255, 152, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 75% 35%, rgba(155, 89, 182, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 25% 85%, rgba(152, 255, 152, 0.1) 1px, transparent 1px),
+          radial-gradient(circle at 65% 65%, rgba(155, 89, 182, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px, 60px 60px, 30px 30px, 40px 40px, 35px 35px, 45px 45px;
+        animation: purpleMintMove 20s linear infinite;
         pointer-events: none;
         z-index: 0;
       }
 
-      /* Add floating flower petals around the content */
+      @keyframes purpleMintMove {
+        0% { 
+          background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% { 
+          background-position: 50px 50px, -60px 60px, 30px -30px, -40px 40px, 35px -35px, -45px 45px;
+          opacity: 0.3;
+        }
+      }
+
+      /* Add floating purple and mint colored elements */
       .letter-content::after {
-        content: '🌸 🌺 🌷 🌹 💮 🌻 🌼 💐';
+        content: '🟣 🟢 💜 💚 🔮 � 🟣 � 💜 💚 � 🌿';
         position: absolute;
         top: -20px;
         left: -20px;
         right: -20px;
         bottom: -20px;
-        font-size: 1.5rem;
-        opacity: 0.3;
-        animation: petalSwirl 25s linear infinite;
+        font-size: 1.8rem;
+        opacity: 0.4;
+        animation: floatingPurpleMint 25s linear infinite;
         pointer-events: none;
         z-index: 0;
         word-spacing: 50px;
         line-height: 80px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
+        text-align: center;
+        color: transparent;
+        text-shadow: 
+          0 0 10px rgba(155, 89, 182, 0.8),
+          0 0 20px rgba(152, 255, 152, 0.6);
+      }
+
+      @keyframes floatingPurpleMint {
+        0% { 
+          transform: translateY(100%) rotate(0deg);
+          opacity: 0.2;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% { 
+          transform: translateY(-100%) rotate(360deg);
+          opacity: 0.2;
+        }
       }
 
       @keyframes petalSwirl {
@@ -1829,14 +1924,41 @@
       }
 
       .letter-text {
-        background: rgba(255, 255, 255, 0.8);
+        background: linear-gradient(135deg, 
+          rgba(152, 255, 152, 0.9) 0%,
+          rgba(255, 255, 255, 0.95) 25%,
+          rgba(255, 255, 255, 0.95) 75%,
+          rgba(155, 89, 182, 0.9) 100%
+        );
         padding: 60px 80px;
-        border-radius: 15px;
+        border-radius: 20px;
         margin: 50px 0;
         position: relative;
         z-index: 1;
         overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        box-shadow: 
+          0 15px 40px rgba(155, 89, 182, 0.2),
+          0 8px 25px rgba(152, 255, 152, 0.15),
+          inset 0 2px 10px rgba(255, 255, 255, 0.3);
+        border: 2px solid rgba(155, 89, 182, 0.3);
+        animation: textGlow 4s ease-in-out infinite;
+      }
+
+      @keyframes textGlow {
+        0%, 100% {
+          box-shadow: 
+            0 15px 40px rgba(155, 89, 182, 0.2),
+            0 8px 25px rgba(152, 255, 152, 0.15),
+            inset 0 2px 10px rgba(255, 255, 255, 0.3);
+          border-color: rgba(155, 89, 182, 0.3);
+        }
+        50% {
+          box-shadow: 
+            0 20px 50px rgba(155, 89, 182, 0.3),
+            0 12px 35px rgba(152, 255, 152, 0.25),
+            inset 0 2px 15px rgba(255, 255, 255, 0.4);
+          border-color: rgba(152, 255, 152, 0.5);
+        }
       }
 
       @keyframes letterGlow {
@@ -1853,10 +1975,27 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.3),
+          rgba(155, 89, 182, 0.4),
+          rgba(152, 255, 152, 0.4),
+          rgba(155, 89, 182, 0.4),
           transparent
         );
-        animation: textShimmer 6s ease-in-out infinite;
+        animation: purpleMintShimmer 8s ease-in-out infinite;
+      }
+
+      @keyframes purpleMintShimmer {
+        0% {
+          left: -100%;
+          opacity: 0;
+        }
+        50% {
+          left: 0%;
+          opacity: 1;
+        }
+        100% {
+          left: 100%;
+          opacity: 0;
+        }
       }
 
       @keyframes textShimmer {
@@ -2447,6 +2586,162 @@
       body.modal-active .envelope-container {
         pointer-events: none;
       }
+
+      /* Music Player Styles */
+      .music-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, rgba(155, 89, 182, 0.95), rgba(152, 255, 152, 0.95));
+        border-radius: 20px;
+        padding: 15px 20px;
+        box-shadow: 
+          0 10px 30px rgba(155, 89, 182, 0.3),
+          0 5px 15px rgba(152, 255, 152, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(15px);
+        z-index: 9999;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: musicPlayerFloat 4s ease-in-out infinite;
+      }
+
+      .music-player.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes musicPlayerFloat {
+        0%, 100% { 
+          transform: translateY(0px);
+          box-shadow: 
+            0 10px 30px rgba(155, 89, 182, 0.3),
+            0 5px 15px rgba(152, 255, 152, 0.2);
+        }
+        50% { 
+          transform: translateY(-5px);
+          box-shadow: 
+            0 15px 40px rgba(155, 89, 182, 0.4),
+            0 8px 20px rgba(152, 255, 152, 0.3);
+        }
+      }
+
+      .music-controls {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .music-btn {
+        background: linear-gradient(135deg, #9b59b6, #98ff98);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .music-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .music-btn:active {
+        transform: scale(0.95);
+      }
+
+      .music-info {
+        flex: 1;
+        color: #2c3e50;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+      }
+
+      .volume-control {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .volume-icon {
+        font-size: 1.1rem;
+      }
+
+      .volume-slider {
+        width: 80px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .volume-slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        background: linear-gradient(135deg, #9b59b6, #98ff98);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .volume-slider::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        background: linear-gradient(135deg, #9b59b6, #98ff98);
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Music visualization effect */
+      .music-btn.playing {
+        animation: musicPulse 1s ease-in-out infinite;
+      }
+
+      @keyframes musicPulse {
+        0%, 100% { 
+          transform: scale(1);
+          box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+        }
+        50% { 
+          transform: scale(1.05);
+          box-shadow: 0 8px 25px rgba(152, 255, 152, 0.4);
+        }
+      }
+
+      /* Responsive design for music player */
+      @media (max-width: 768px) {
+        .music-player {
+          bottom: 10px;
+          right: 10px;
+          padding: 12px 15px;
+        }
+        
+        .music-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+        
+        .volume-slider {
+          width: 60px;
+        }
+        
+        .music-info {
+          font-size: 0.8rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2549,7 +2844,7 @@
           
           <div class="modal-body">
             <div class="question-container">
-              <p class="security-question">What is my name?</p>
+              <p class="security-question">What is my full name (your asawa)?</p>
               <input type="text" id="nameInput" class="name-input" placeholder="Enter the name..." autocomplete="off">
               <div class="input-decoration">
                 <span class="input-flower">🌸</span>
@@ -2594,6 +2889,28 @@
       <!-- Opening Animation Effects -->
       <div class="opening-particles" id="openingParticles"></div>
       <div class="rose-petals" id="rosePetals"></div>
+
+      <!-- Music Player -->
+      <div class="music-player" id="musicPlayer">
+        <audio id="backgroundMusic" loop>
+          <source src="audio/Nahanap Kita - Amiel Sol (Official Lyric Video).mp3" type="audio/mpeg">
+          <!-- Single music file from audio folder -->
+        </audio>
+        
+        <div class="music-controls">
+          <button id="playPauseBtn" class="music-btn">
+            <span class="play-icon">▶️</span>
+            <span class="pause-icon" style="display: none;">⏸️</span>
+          </button>
+          <div class="music-info">
+            <span class="music-title">💕Nahanap Kita - Amiel Sol💕</span>
+          </div>
+          <div class="volume-control">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volumeSlider" min="0" max="100" value="100" class="volume-slider">
+          </div>
+        </div>
+      </div>
 
       <!-- Letter (revealed after opening) -->
       <div class="letter-container" id="letterContainer">
@@ -2839,7 +3156,7 @@
             With all my love and endless affection,
           </div>
           <div class="signature-text">Your Forever Person</div>
-          <div class="date">August 16, 2025</div>
+          <div class="date">August 15, 2025</div>
         </div>
       </div>
     </div>
@@ -3014,6 +3331,9 @@
           // Add opened class for main animation
           envelopeContainer.classList.add('opened');
           
+          // Show and start music player
+          showMusicPlayer();
+          
           // Create magical opening effects
           createOpeningEffects();
           
@@ -3022,6 +3342,99 @@
             startFloatingFlowers();
           }, 1000);
         }
+        
+        // Music Player Functionality
+        const musicPlayer = document.getElementById('musicPlayer');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = playPauseBtn.querySelector('.play-icon');
+        const pauseIcon = playPauseBtn.querySelector('.pause-icon');
+        const volumeSlider = document.getElementById('volumeSlider');
+        
+        let isPlaying = false;
+        
+        function showMusicPlayer() {
+          // Show music player with animation
+          setTimeout(() => {
+            musicPlayer.classList.add('show');
+          }, 1500);
+          
+          // Auto-play music after a short delay
+          setTimeout(() => {
+            playMusic();
+          }, 2000);
+        }
+        
+        function playMusic() {
+          backgroundMusic.play().then(() => {
+            isPlaying = true;
+            updatePlayPauseButton();
+            playPauseBtn.classList.add('playing');
+            console.log('Music started playing');
+          }).catch(error => {
+            console.log('Auto-play prevented by browser:', error);
+            // If auto-play is blocked, just show the player
+          });
+        }
+        
+        function pauseMusic() {
+          backgroundMusic.pause();
+          isPlaying = false;
+          updatePlayPauseButton();
+          playPauseBtn.classList.remove('playing');
+        }
+        
+        function toggleMusic() {
+          if (isPlaying) {
+            pauseMusic();
+          } else {
+            playMusic();
+          }
+        }
+        
+        function updatePlayPauseButton() {
+          if (isPlaying) {
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'inline';
+          } else {
+            playIcon.style.display = 'inline';
+            pauseIcon.style.display = 'none';
+          }
+        }
+        
+        // Set initial volume to maximum
+        backgroundMusic.volume = 1.0;
+        
+        // Event listeners for music controls
+        if (playPauseBtn) {
+          playPauseBtn.addEventListener('click', toggleMusic);
+        }
+        
+        if (volumeSlider) {
+          volumeSlider.addEventListener('input', function() {
+            backgroundMusic.volume = this.value / 100;
+          });
+        }
+        
+        // Handle music events
+        backgroundMusic.addEventListener('ended', function() {
+          // Music loop is handled by the 'loop' attribute
+          isPlaying = false;
+          updatePlayPauseButton();
+          playPauseBtn.classList.remove('playing');
+        });
+        
+        backgroundMusic.addEventListener('pause', function() {
+          isPlaying = false;
+          updatePlayPauseButton();
+          playPauseBtn.classList.remove('playing');
+        });
+        
+        backgroundMusic.addEventListener('play', function() {
+          isPlaying = true;
+          updatePlayPauseButton();
+          playPauseBtn.classList.add('playing');
+        });
         
         // Event listeners for security modal
         if (submitButton) {
